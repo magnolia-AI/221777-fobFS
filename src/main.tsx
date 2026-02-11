@@ -1,18 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { RootLayout } from '@/layouts/RootLayout'
-import HomePage from '@/pages/HomePage'
 import './index.css'
+import HomePage from './pages/HomePage.tsx'
+import JournalenPage from './pages/JournalenPage.tsx'
+import ReceptPage from './pages/ReceptPage.tsx'
+import MeddelandenPage from './pages/MeddelandenPage.tsx'
+import BokadeTiderPage from './pages/BokadeTiderPage.tsx'
+import IntygPage from './pages/IntygPage.tsx'
+import TjansterPage from './pages/TjansterPage.tsx'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route element={<RootLayout />}>
-          <Route path="/" element={<HomePage />} />
-        </Route>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/journalen" element={<JournalenPage />} />
+        <Route path="/recept" element={<ReceptPage />} />
+        <Route path="/meddelanden" element={<MeddelandenPage />} />
+        <Route path="/bokade-tider" element={<BokadeTiderPage />} />
+        <Route path="/intyg" element={<IntygPage />} />
+        <Route path="/tjanster" element={<TjansterPage />} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
+  </StrictMode>,
 )

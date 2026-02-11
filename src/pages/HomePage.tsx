@@ -1,14 +1,15 @@
 import React from 'react';
 import { Header } from '@/components/Header';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Stethoscope, ClipboardList, Calendar, Inbox, FileText, LayoutGrid, ChevronRight, Play } from 'lucide-react';
 
-const ServiceCard = ({ icon: Icon, title }: { icon: any, title: string }) => (
-  <button className="flex items-center gap-6 p-6 bg-white border border-gray-100 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] transition-all cursor-pointer text-left w-full group">
+const ServiceCard = ({ icon: Icon, title, to }: { icon: any, title: string, to: string }) => (
+  <Link to={to} className="flex items-center gap-6 p-6 bg-white border border-gray-100 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] transition-all cursor-pointer text-left w-full group">
     <div className="bg-[#fdf2f2] p-4 rounded-xl text-[#c32139] transition-colors">
       <Icon size={28} className="stroke-[1.5px]" />
     </div>
     <span className="text-xl font-bold text-[#2a4365] transition-colors">{title}</span>
-  </button>
+  </Link>
 );
 
 const ArticleCard = ({ image, title, description }: { image: string, title: string, description: string }) => (
@@ -72,12 +73,12 @@ export default function HomePage() {
         <section className="max-w-7xl mx-auto px-4 md:px-8 py-16">
           <h2 className="text-4xl font-bold text-[#c32139] mb-12">Vad vill du göra?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ServiceCard icon={ClipboardList} title="Läsa journalen" />
-            <ServiceCard icon={Stethoscope} title="Förnya recept" />
-            <ServiceCard icon={Inbox} title="Läsa och svara på meddelanden" />
-            <ServiceCard icon={Calendar} title="Se bokade tider" />
-            <ServiceCard icon={FileText} title="Läsa och skicka intyg" />
-            <ServiceCard icon={LayoutGrid} title="Se fler tjänster" />
+            <ServiceCard icon={ClipboardList} title="Läsa journalen" to="/journalen" />
+            <ServiceCard icon={Stethoscope} title="Förnya recept" to="/recept" />
+            <ServiceCard icon={Inbox} title="Läsa och svara på meddelanden" to="/meddelanden" />
+            <ServiceCard icon={Calendar} title="Se bokade tider" to="/bokade-tider" />
+            <ServiceCard icon={FileText} title="Läsa och skicka intyg" to="/intyg" />
+            <ServiceCard icon={LayoutGrid} title="Se fler tjänster" to="/tjanster" />
           </div>
         </section>
 
